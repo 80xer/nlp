@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bluebird": "^2.9.34",
+    "edit-google-spreadsheet": "^0.2.19",
     "moment": "^2.10.6",
     "nginxparser": "^1.2.0",
     "underscore": "^1.8.3"

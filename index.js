@@ -1,4 +1,5 @@
 var nginxparsewith = require('./nginxparsewidth'),
+  Spreadsheet = require('edit-google-spreadsheet')
   url = require('url');
 
 function nlp(logfile, callback) {
@@ -97,7 +98,45 @@ function nlp(logfile, callback) {
   var logs = [];
 
   nginxparsewith(logfile, logs, shouldShowPrerenderedPage, function(logs) {
+    console.log(logfile + ' successfully parsed and fileterd by prerender (current parsed: %d items)', logs.length);
+    console.log(logs[0]);
+    console.log('complete!');
     callback && callback(logs);
+
+    Spreadsheet.load({
+      debug: true,
+      spreadsheetName: 'prerender log',
+      worksheetName: 'sh1',
+      oauth : {
+        email: '748744049605@developer.gserviceaccount.com',
+        keyFile: './googlekey.pem'
+      },
+    }, function sheetReady(err, spreadsheet) {
+      if(err) throw err;
+      spreadsheet.add({ 3: { 5: "hello!" } });
+      spreadsheet.send(function(err) {
+        if(err) throw err;
+        console.log("Updated Cell at row 3, column 5 to 'hello!'");
+      });
+      spreadsheet.receive(function(err, rows, info) {
+        if(err) throw err;
+        console.log("Found rows:", rows);
+      });
+
+      spreadsheet.metadata(function(err, metadata){
+        if(err) throw err;
+        console.log(metadata);
+      });
+
+      spreadsheet.metadata({
+        title: 'sheet1',
+        rowCount: 100,
+        colCount: 20
+      }, function(err, metadata){
+        if(err) throw err;
+        console.log(metadata);
+      });
+    });
   });
 }
 

@@ -23,9 +23,6 @@ console.log('Reading ' + logPath + ' ...');
 fs.readFile(logPath, function (err, buffer) {
   if (!!err) throw err;
 
-  nlp(logPath,function (collection) {
-        console.log(logPath + ' successfully parsed and fileterd by prerender (current parsed: %d items)', collection.length);
-        console.log(collection[0]);
-        console.log('complete!');
-    });
+  nlp(logPath,function (logs) {
+  });
 });
