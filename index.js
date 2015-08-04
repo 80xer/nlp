@@ -106,7 +106,7 @@ function nlp(logfile, callback) {
       worksheetId: 'od6',
       oauth : {
         email: '748744049605@developer.gserviceaccount.com',
-        keyFile: './googlekey.pem'
+        keyFile: process.env.PEM_KEY
       },
     }, function sheetReady(err, spreadsheet) {
       if(err) throw err;
