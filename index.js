@@ -99,36 +99,62 @@ function nlp(logfile, callback) {
 
   nginxparsewith(logfile, logs, shouldShowPrerenderedPage, function(logs) {
     console.log(logfile + ' successfully parsed and fileterd by prerender (current parsed: %d items)', logs.length);
-    console.log(logs[0]);
-    console.log('complete!');
-    callback && callback(logs);
-
+    
     Spreadsheet.load({
       debug: true,
       spreadsheetId: '14a3XVZLwC3y7O3PDBoEriv1tOS3pFsQy7PGQEwXdv5g',
       worksheetId: 'od6',
       oauth : {
         email: '748744049605@developer.gserviceaccount.com',
-        keyFile: '/Users/leedongeun/.ssh/googlekey.pem'
+        keyFile: './googlekey.pem'
       },
     }, function sheetReady(err, spreadsheet) {
       if(err) throw err;
-      spreadsheet.add({ 3: { 5: "hello!" } });
-      spreadsheet.send(function(err) {
-        if(err) throw err;
-        console.log("Updated Cell at row 3, column 5 to 'hello!'");
-      });
+      var sheetContent = [],
+        i = 0;
+        j = logs.length,
+        today = new Date();
+
+      today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate() + " " 
+            + today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
+          
       spreadsheet.receive(function(err, rows, info) {
         if(err) throw err;
-        console.log("Found rows:", rows);
-      });
+        if(rows['1'] && rows['1']['2']) {
+          var cnt = rows['1']['2'].replace('count : ', '');
+          if (!isNaN(cnt)) j = cnt;
+        }
+        console.log("before count :", j);
+        console.log('run : ' + today);
+        console.log("count :", logs.length);
+        for( i = 0; i < j; i++) {
+          sheetContent.push(['', '', '', '', '', '']); 
+        }
+        spreadsheet.add(sheetContent);
+        spreadsheet.send(function(err) {
+          if(err) throw err;
+          console.log("Clear Sheet");
+          sheetContent = [];
 
-      spreadsheet.metadata(function(err, metadata){
-        if(err) throw err;
-        console.log(metadata);
+          for( i = 0; i < j; i++) {
+            if (i === 0) {
+              sheetContent.push(['run : ' + today, logs[i].time_local, logs[i].status, logs[i].http_user_agent, logs[i].request]);
+            } else if (i === 1) {
+              sheetContent.push(['count : ' + j, logs[i].time_local, logs[i].status, logs[i].http_user_agent, logs[i].request]);
+            } else {
+              sheetContent.push(['', logs[i].time_local, logs[i].status, logs[i].http_user_agent, logs[i].request]); 
+            }
+          }
+          spreadsheet.add(sheetContent);
+          spreadsheet.send(function(err) {
+            if(err) throw err;
+            console.log('complete!');
+          });
+        });
       });
-
     });
+
+    callback && callback(logs);
   });
 }
 
