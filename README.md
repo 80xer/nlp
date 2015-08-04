@@ -1,5 +1,5 @@
 # nlp
 
-export PEM_KEY="/path/to/.ssh/your_key.pem"
+export PEM_KEY="/path/to/your_key.pem"
 
 
