@@ -105,11 +105,11 @@ function nlp(logfile, callback) {
 
     Spreadsheet.load({
       debug: true,
-      spreadsheetName: 'prerender log',
-      worksheetName: 'sh1',
+      spreadsheetId: '14a3XVZLwC3y7O3PDBoEriv1tOS3pFsQy7PGQEwXdv5g',
+      worksheetId: 'od6',
       oauth : {
         email: '748744049605@developer.gserviceaccount.com',
-        keyFile: './googlekey.pem'
+        keyFile: '/Users/leedongeun/.ssh/googlekey.pem'
       },
     }, function sheetReady(err, spreadsheet) {
       if(err) throw err;
@@ -128,14 +128,6 @@ function nlp(logfile, callback) {
         console.log(metadata);
       });
 
-      spreadsheet.metadata({
-        title: 'sheet1',
-        rowCount: 100,
-        colCount: 20
-      }, function(err, metadata){
-        if(err) throw err;
-        console.log(metadata);
-      });
     });
   });
 }
