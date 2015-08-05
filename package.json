@@ -1,6 +1,6 @@
 {
   "name": "nlp-gs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "parse nginx log files, filtering crawler bot, pass to google spreadsheet in node.js (use nginxparser)",
   "main": "./src/index.js",
   "bin": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com:80xer/nlp-gs.git"
+    "url": "git@github.com:80xer/nlp-gs.git"
   },
   "author": "80xer",
   "license": "ISC",
