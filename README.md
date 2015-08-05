@@ -13,7 +13,7 @@ nlp acceess.log [config_file]
 Or:
 
 ``` javascript
-var nlp = require('./index'),
+var nlp = require('nlp'),
   fs = require('fs');
 
 var config = JSON.parse(fs.readFileSync('config.json'));
