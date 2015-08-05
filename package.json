@@ -2,7 +2,15 @@
   "name": "nlp",
   "version": "1.0.0",
   "description": "parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)",
-  "main": "index.js",
+  "main": "./src/index.js",
+  "bin": {
+    "nlp": "bin/nlp.js"
+  },
+  "keywords": [
+    "nginxparser",
+    "nginx logfile",
+    "google spreadsheet"
+  ],
   "dependencies": {
     "bluebird": "^2.9.34",
     "edit-google-spreadsheet": "^0.2.19",
@@ -16,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/80xer/nlp.git"
   },
-  "author": "{"name":"80xer", "email":"80xer.s@gmail.com"}",
+  "author": "80xer",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/80xer/nlp/issues"

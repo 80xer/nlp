@@ -6,9 +6,8 @@ nlp
 
 */
 
-var nlp = require('./index')
+var nlp = require('../src/index')
   , fs = require('fs')
-  , path = require('path')
 ;
 
 var logPath = process.argv[2];
