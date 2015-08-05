@@ -1,6 +1,6 @@
 {
   "name": "nlp-gs",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)",
   "main": "./src/index.js",
   "bin": {
@@ -22,12 +22,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com:80xer/nlp-gs.git"
+    "url": "git://github.com:80xer/nlp-gs.git"
   },
   "author": "80xer",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/80xer/nlp-gs/issues"
   },
-  "homepage": "https://github.com/80xer/nlp-gs#readme"
+  "homepage": "https://github.com/80xer/nlp-gs"
 }

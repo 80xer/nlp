@@ -4,6 +4,12 @@ parse nginx log files, and pass to google spreadsheet in node.js (use nginxparse
 Usage
 -----
 
+Install:
+
+``` bash
+npm install -g nlp-gs
+```
+
 Usage example:
 
 ```bash
