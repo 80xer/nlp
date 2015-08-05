@@ -12,9 +12,12 @@ var nlp = require('./index')
 ;
 
 var logPath = process.argv[2];
+var configFile = process.argv[3];
+
+configFile = configFile || './config.json';
 
 if (!logPath) {
-  console.log(' eg: nlp ./access.log');
+  console.log(' eg: nlp ./access.log config.json');
   process.exit();
 }
 
@@ -22,7 +25,7 @@ console.log('Reading ' + logPath + ' ...');
 
 fs.readFile(logPath, function (err, buffer) {
   if (!!err) throw err;
-
-  nlp(logPath,function (logs) {
+  var config = JSON.parse(fs.readFileSync(configFile));
+  nlp(logPath, config, function (logs) {
   });
 });

@@ -1,5 +1,8 @@
-var nlp = require('./index');
+var nlp = require('./index'),
+  fs = require('fs');
 
-nlp('./access.log', function(logs) {
+var config = JSON.parse(fs.readFileSync('config.json'));
+
+nlp('./access.log', config, function(logs) {
   console.log('logs good:' + logs.length);
 })

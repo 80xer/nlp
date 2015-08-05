@@ -1,8 +1,8 @@
 var nginxparsewith = require('./nginxparsewidth'),
-  Spreadsheet = require('edit-google-spreadsheet')
+  Spreadsheet = require('edit-google-spreadsheet'),
   url = require('url');
 
-function nlp(logfile, callback) {
+function nlp(logfile, config, callback) {
 
   function shouldShowPrerenderedPage(log) {
     var crawlerUserAgents = [
@@ -99,16 +99,33 @@ function nlp(logfile, callback) {
 
   nginxparsewith(logfile, logs, shouldShowPrerenderedPage, function(logs) {
     console.log(logfile + ' successfully parsed and fileterd by prerender (current parsed: %d items)', logs.length);
-    
-    Spreadsheet.load({
-      debug: true,
-      spreadsheetId: '14a3XVZLwC3y7O3PDBoEriv1tOS3pFsQy7PGQEwXdv5g',
-      worksheetId: 'od6',
-      oauth : {
-        email: '748744049605@developer.gserviceaccount.com',
-        keyFile: process.env.PEM_KEY
-      },
-    }, function sheetReady(err, spreadsheet) {
+    var loadConfig = {
+        debug: true,
+        oauth: {
+          email: config.email,
+          keyFile: config.keyFile
+        }
+      }
+
+    if (config.spreadsheetId) {
+      loadConfig.spreadsheetId = config.spreadsheetId;
+    } else if (config.spreadsheetName) {
+      loadConfig.spreadsheetName = config.spreadsheetName;
+    } else {
+      console.log('not found spreadsheetId or spreadsheetName');
+      return;
+    }
+
+    if (config.worksheetId) {
+      loadConfig.worksheetId = config.worksheetId;
+    } else if (config.worksheetName) {
+      loadConfig.worksheetName = config.worksheetName;
+    } else {
+      console.log('not found worksheetId or worksheetName');
+      return;
+    }
+
+    Spreadsheet.load(loadConfig, function sheetReady(err, spreadsheet) {
       if(err) throw err;
       var sheetContent = [],
         i = 0;
