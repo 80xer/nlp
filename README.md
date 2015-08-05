@@ -1,4 +1,4 @@
-# nlp
+# nlp-gs
 parse nginx log files, filtering crawler bot, pass to google spreadsheet in node.js (use nginxparser)
 
 Usage
