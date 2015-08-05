@@ -7,7 +7,7 @@ Usage
 Usage example:
 
 ```bash
-nlp acceess.log [config_file]
+nlp acceess.log config_file
 ```
 
 Or:
@@ -26,7 +26,6 @@ nlp('./access.log', config, function(logs) {
 
 Config file
 -----
-config_file is required, default name is 'config.json'
 ``` javascript
 {
   "email": "google service account email address",

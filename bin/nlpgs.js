@@ -13,10 +13,9 @@ var nlp = require('../src/index')
 var logPath = process.argv[2];
 var configFile = process.argv[3];
 
-configFile = configFile || './config.json';
-
-if (!logPath) {
+if (!logPath || !configFile) {
   console.log(' eg: nlp ./access.log config.json');
+  console.log(' read https://github.com/80xer/nlp-gs');
   process.exit();
 }
 
@@ -24,7 +23,10 @@ console.log('Reading ' + logPath + ' ...');
 
 fs.readFile(logPath, function (err, buffer) {
   if (!!err) throw err;
-  var config = JSON.parse(fs.readFileSync(configFile));
-  nlp(logPath, config, function (logs) {
+  fs.readFile(configFile, function (err, config) {
+    if (!!err) throw err;
+    config = JSON.parse(config);
+    nlp(logPath, config, function (logs) {
+    });
   });
 });

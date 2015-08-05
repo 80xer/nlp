@@ -1,0 +1,96 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@2.12.1
+3 info using node@v0.12.5
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/leedongeun/lawcompany/repo/nlp',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/leedongeun/.npm/nlp/1.0.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/leedongeun/.npm/nlp/1.0.0/package.tgz',
+9 verbose tar pack   '/Users/leedongeun/lawcompany/repo/nlp' ]
+10 verbose tarball /Users/leedongeun/.npm/nlp/1.0.0/package.tgz
+11 verbose folder /Users/leedongeun/lawcompany/repo/nlp
+12 info prepublish nlp@1.0.0
+13 verbose addLocalTarball adding from inside cache /Users/leedongeun/.npm/nlp/1.0.0/package.tgz
+14 silly cache afterAdd nlp@1.0.0
+15 verbose afterAdd /Users/leedongeun/.npm/nlp/1.0.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/leedongeun/.npm/nlp/1.0.0/package/package.json written
+17 silly publish { name: 'nlp',
+17 silly publish   version: '1.0.0',
+17 silly publish   description: 'parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)',
+17 silly publish   main: './src/index.js',
+17 silly publish   bin: { nlp: 'bin/nlp.js' },
+17 silly publish   keywords: [ 'nginxparser', 'nginx logfile', 'google spreadsheet' ],
+17 silly publish   dependencies:
+17 silly publish    { bluebird: '^2.9.34',
+17 silly publish      'edit-google-spreadsheet': '^0.2.19',
+17 silly publish      nginxparser: '^1.2.0' },
+17 silly publish   devDependencies: {},
+17 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+17 silly publish   repository: { type: 'git', url: 'git+https://github.com/80xer/nlp.git' },
+17 silly publish   author: { name: '80xer' },
+17 silly publish   license: 'ISC',
+17 silly publish   bugs: { url: 'https://github.com/80xer/nlp/issues' },
+17 silly publish   homepage: 'https://github.com/80xer/nlp#readme',
+17 silly publish   readme: '# nlp\nparse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)\n\nUsage\n-----\n\nUsage example:\n\n```bash\nnlp acceess.log [config_file]\n```\n\nOr:\n\n``` javascript\nvar nlp = require(\'nlp\'),\n  fs = require(\'fs\');\n\nvar config = JSON.parse(fs.readFileSync(\'config.json\'));\n\nnlp(\'./access.log\', config, function(logs) {\n  console.log(\'logs good:\' + logs.length);\n})\n\n```\n\nConfig file\n-----\nconfig_file is required, default name is \'config.json\'\n``` javascript\n{\n  "email": "google service account email address",\n  "keyFile": "/path/to/your_key.pem",\n  "spreadsheetId": "spreadsheet id",\n  "worksheetId": "worksheet id"\n  "spreadsheetName": "spreadsheet name",\n  "worksheetName": "worksheet name"\n}\n``` \n\'spreadsheet id\' or \'spreadsheet name\' is required\n\'worksheet id\' or \'worksheet name\' is required\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '0de9781e28e38b185d109914a2c3f4f253e11c21',
+17 silly publish   _id: 'nlp@1.0.0',
+17 silly publish   _shasum: '00ca9f14c3a43a04a41c67de16187ecd9e1508ab',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name nlp
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/nlp
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading /Users/leedongeun/.npm/nlp/1.0.0/package.tgz
+25 verbose request uri https://registry.npmjs.org/nlp
+26 verbose request sending authorization for write operation
+27 info attempt registry request try #1 at 11:15:10 AM
+28 verbose request using bearer token for auth
+29 verbose request id 2fc67bffc2d07777
+30 http request PUT https://registry.npmjs.org/nlp
+31 http 403 https://registry.npmjs.org/nlp
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=60',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Wed, 05 Aug 2015 02:15:10 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-nrt6132-NRT',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1438740910.313848,VS0,VE488' }
+33 verbose request invalidating /Users/leedongeun/.npm/registry.npmjs.org/nlp on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: You do not have permission to publish 'nlp'. Are you logged in as the correct user? : nlp
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:247:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:197:22)
+35 verbose stack     at Request.emit (events.js:110:17)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1050:14)
+35 verbose stack     at Request.emit (events.js:129:20)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:996:12)
+35 verbose stack     at IncomingMessage.emit (events.js:129:20)
+35 verbose stack     at _stream_readable.js:908:16
+35 verbose stack     at process._tickCallback (node.js:355:11)
+36 verbose statusCode 403
+37 verbose pkgid nlp
+38 verbose cwd /Users/leedongeun/lawcompany/repo/nlp
+39 error Darwin 14.4.0
+40 error argv "node" "/usr/local/bin/npm" "publish"
+41 error node v0.12.5
+42 error npm  v2.12.1
+43 error code E403
+44 error You do not have permission to publish 'nlp'. Are you logged in as the correct user? : nlp
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]

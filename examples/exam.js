@@ -1,4 +1,4 @@
-var nlp = require('nlp'),
+var nlp = require('nlp-gs'),
   fs = require('fs');
 
 var config = JSON.parse(fs.readFileSync('config.json'));
