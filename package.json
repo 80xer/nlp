@@ -1,7 +1,7 @@
 {
   "name": "nlp",
   "version": "1.0.0",
-  "description": "",
+  "description": "parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)",
   "main": "index.js",
   "dependencies": {
     "bluebird": "^2.9.34",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/80xer/nlp.git"
   },
-  "author": "",
+  "author": "{"name":"80xer", "email":"80xer.s@gmail.com"}",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/80xer/nlp/issues"
