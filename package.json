@@ -1,7 +1,7 @@
 {
   "name": "nlp-gs",
-  "version": "1.0.3",
-  "description": "parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)",
+  "version": "1.0.4",
+  "description": "parse nginx log files, filtering crawler bot, pass to google spreadsheet in node.js (use nginxparser)",
   "main": "./src/index.js",
   "bin": {
     "nlpgs": "bin/nlpgs.js"

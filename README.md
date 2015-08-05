@@ -1,5 +1,5 @@
 # nlp
-parse nginx log files, and pass to google spreadsheet in node.js (use nginxparser)
+parse nginx log files, filtering crawler bot, pass to google spreadsheet in node.js (use nginxparser)
 
 Usage
 -----
